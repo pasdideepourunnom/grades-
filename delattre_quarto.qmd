@@ -33,3 +33,13 @@ grades |> nrow()
 
 The data set contains 46 883 grades. 
 
+### Question 3 
+
+```{r}
+grades |> distinct(id, .keep_all = TRUE) |> nrow()
+```
+The data set contains 744 students. 
+
+### Question 4 
+
+
