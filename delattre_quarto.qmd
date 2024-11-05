@@ -25,4 +25,11 @@ View(grades)
 ```
 
 
+### Question 2: 
+
+```{r}
+grades |> nrow()
+```
+
+The data set contains 46 883 grades. 
 
