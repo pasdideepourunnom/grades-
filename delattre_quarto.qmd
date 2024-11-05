@@ -42,4 +42,8 @@ The data set contains 744 students.
 
 ### Question 4 
 
+```{r}
+students <- grades |> distinct(id, .keep_all = TRUE) |> select(id, group) 
+students |> slice(1:10)
+```
 
