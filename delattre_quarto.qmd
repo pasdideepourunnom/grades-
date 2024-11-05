@@ -114,8 +114,9 @@ grades |> filter(course == "Architecture and Sculpture") |>
 ```{r}
 student_av <- grades |> select(!semester) |>
   group_by(id, group, course) |>
-  summarise(`Average per course` = mean(grade), .groups = "drop_last")
-##student_av |> pivot_wider(!id & !group, names_from = course, values_from ##= `Average per course`)
+  summarise(`Average per course` = mean(grade), .groups = "drop_last") 
+student_av |> ungroup() |> slice(1:10) |> knitr::kable()
+##student_av |> ungroup() |> pivot_wider(!id & !group, names_from = ##course, values_from = `Average per course`)
 ```
 
 ### Question 13 
