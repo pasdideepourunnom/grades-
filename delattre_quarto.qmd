@@ -112,6 +112,15 @@ grades |> filter(course == "Architecture and Sculpture") |>
 ### Question 12 
 
 ```{r}
-student_av <- grades |> select(!semester) |> group_by(id, course, group) |> summarise(`Average per course` = mean(grade), .groups = "drop_last") |> pivot_wider(!id & !group, names_to = course)
+student_av <- grades |> select(!semester) |>
+  group_by(id, group, course) |>
+  summarise(`Average per course` = mean(grade), .groups = "drop_last")
+##student_av |> pivot_wider(!id & !group, names_from = course, values_from ##= `Average per course`)
+```
+
+### Question 13 
+
+```{r}
+
 ```
 
