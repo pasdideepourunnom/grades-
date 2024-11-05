@@ -3,11 +3,12 @@ title: "DELATTRE"
 format: html
 ---
 
-## Introduction 
+## Introduction
 
-### Question 1 
+### Question 1
 
-Packages 
+Packages
+
 ```{r}
 #| message: false
 here::i_am("grades-.Rproj")
@@ -16,6 +17,7 @@ library(vroom)
 library(dplyr)
 library(tidyr)
 ```
+
 Data set:
 
 ```{r}
@@ -24,45 +26,63 @@ library(readr)
 grades <- read_csv("grades.csv")
 ```
 
-
-### Question 2: 
+### Question 2:
 
 ```{r}
 grades |> nrow()
 ```
 
-The data set contains 46 883 grades. 
+The data set contains 46 883 grades.
 
-### Question 3 
+### Question 3
 
 ```{r}
 grades |> distinct(id, .keep_all = TRUE) |> nrow()
 ```
-The data set contains 744 students. 
 
-### Question 4 
+The data set contains 744 students.
+
+### Question 4
 
 ```{r}
 students <- grades |> distinct(id, .keep_all = TRUE) |> select(id, group) 
 students |> slice(1:10)
 ```
 
-### Question 5 
+### Question 5
 
 ```{r}
 students |> ggplot(aes(x = group)) + geom_bar()
 ```
 
-### Question 6 
+### Question 6
 
 ```{r}
 grades |> filter(course == "Martial Arts and Self-Defense" ) |> group_by(group) |> summarize(Average = mean(grade)) |> ggplot(aes(x = group, y = Average)) + geom_col()
 ```
 
-### Question 7 
+### Question 7
 
 ```{r}
 grades |> filter(semester == 1) |> ggplot(aes(x = grade)) + geom_density()
 grades |> filter(semester == 2) |> ggplot(aes(x = grade)) + geom_density()
 ```
+
+### Question 8
+
+```{r}
+grades |> group_by(id, group) |>
+  summarize( "Number of grades" = n()) |> ungroup() |>
+  slice(1:10) |> knitr::kable()
+```
+
+### Question 9
+
+```{r}
+grades |> filter(course == "Architecture and Sculpture") |>
+  select(!semester) |> group_by(id, group) |>
+  summarise(N = n()) |> ungroup() |>
+  slice(1:10) |> knitr::kable()
+```
+
 
