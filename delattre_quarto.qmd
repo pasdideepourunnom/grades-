@@ -53,4 +53,10 @@ students |> slice(1:10)
 students |> ggplot(aes(x = group)) + geom_bar()
 ```
 
+### Question 6 
+
+```{r}
+grades |> filter(course == "Martial Arts and Self-Defense" ) |> group_by(group) |> summarize(Average = mean(grade)) |> ggplot(aes(x = group, y = Average)) + geom_col()
+```
+
 
