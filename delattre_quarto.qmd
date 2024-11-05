@@ -59,4 +59,10 @@ students |> ggplot(aes(x = group)) + geom_bar()
 grades |> filter(course == "Martial Arts and Self-Defense" ) |> group_by(group) |> summarize(Average = mean(grade)) |> ggplot(aes(x = group, y = Average)) + geom_col()
 ```
 
+### Question 7 
+
+```{r}
+grades |> filter(semester == 1) |> ggplot(aes(x = grade)) + geom_density()
+grades |> filter(semester == 2) |> ggplot(aes(x = grade)) + geom_density()
+```
 
