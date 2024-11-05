@@ -1,6 +1,8 @@
 ---
 title: "DELATTRE"
-format: html
+format: 
+  html: default 
+  pdf: default
 ---
 
 ## Introduction
@@ -25,6 +27,8 @@ Data set:
 library(readr)
 grades <- read_csv("grades.csv")
 ```
+
+## Simple analyses 
 
 ### Question 2:
 
@@ -68,6 +72,8 @@ grades |> filter(semester == 1) |> ggplot(aes(x = grade)) + geom_density()
 grades |> filter(semester == 2) |> ggplot(aes(x = grade)) + geom_density()
 ```
 
+## Attendance Analysis
+
 ### Question 8
 
 ```{r}
@@ -88,6 +94,24 @@ grades |> filter(course == "Architecture and Sculpture") |>
 ### Question 10 
 
 ```{r}
+grades |> filter(course == "Architecture and Sculpture") |>
+  select(!semester) |> group_by(id, group) |>
+  summarise(N = n()) |> ungroup() |> group_by(N) |> summarise(Nb = n()) |> ggplot(aes(x = N, y = Nb)) + geom_col()
+```
 
+
+### Question 11 
+
+```{r}
+
+```
+
+## Grade Analysis 
+
+
+### Question 12 
+
+```{r}
+student_av <- grades |> select(!semester) |> group_by(id, course, group) |> summarise(`Average per course` = mean(grade), .groups = "drop_last") |> pivot_wider(!id & !group, names_to = course)
 ```
 
