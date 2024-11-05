@@ -19,9 +19,9 @@ library(tidyr)
 Data set:
 
 ```{r}
+#| message: false
 library(readr)
 grades <- read_csv("grades.csv")
-View(grades)
 ```
 
 
@@ -46,4 +46,11 @@ The data set contains 744 students.
 students <- grades |> distinct(id, .keep_all = TRUE) |> select(id, group) 
 students |> slice(1:10)
 ```
+
+### Question 5 
+
+```{r}
+students |> ggplot(aes(x = group)) + geom_bar()
+```
+
 
