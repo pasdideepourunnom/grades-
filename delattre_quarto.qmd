@@ -85,4 +85,9 @@ grades |> filter(course == "Architecture and Sculpture") |>
   slice(1:10) |> knitr::kable()
 ```
 
+### Question 10 
+
+```{r}
+
+```
 
