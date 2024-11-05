@@ -3,3 +3,26 @@ title: "DELATTRE"
 format: html
 ---
 
+## Introduction 
+
+### Question 1 
+
+Packages 
+```{r}
+#| message: false
+here::i_am("grades-.Rproj")
+library(ggplot2)
+library(vroom)
+library(dplyr)
+library(tidyr)
+```
+Data set:
+
+```{r}
+library(readr)
+grades <- read_csv("grades.csv")
+View(grades)
+```
+
+
+
